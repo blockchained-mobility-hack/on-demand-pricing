@@ -15,11 +15,22 @@ import datetime
 #import re
 import pandas as pd
 
+#===============================================================================
+# Logging
+#===============================================================================
 
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(funcName)25s() %(levelname)-9s %(message)s',
                     datefmt="%Y-%m-%d %H:%M:%S",
                     )
+
+#===============================================================================
+# Constants
+#===============================================================================
+
+PATH_PROVIDERS = "./PROVIDER_DATA/trips offered.xlsx"
+assert os.path.exists(PATH_PROVIDERS)
+
 #===============================================================================
 # Start application
 #===============================================================================
@@ -35,7 +46,23 @@ logging.debug("CORS is ENABLED")
 #===============================================================================
 # Private methods
 #===============================================================================
+def load_trips(data_path):
+    xls = pd.ExcelFile(data_path)
 
+    df_trips = pd.read_excel(xls, 'trips')
+    logging.debug("Loaded  {} trips".format(len(df_trips)))
+
+    df_providers = pd.read_excel(xls, 'providers')
+    logging.debug("Loaded  {} providers".format(len(df_providers)))
+
+    df_rules = pd.read_excel(xls, 'rules')
+    logging.debug("Loaded  {} rules".format(len(df_rules)))
+    
+    df_combined = pd.merge(df_trips, df_rules, how='left', left_on=['ruleID'], right_on=['ruleID'])
+    logging.debug("Returning  {} merged trip records".format(len(df_combined)))
+    
+    return df_combined
+    
 #===============================================================================
 # JSON methods
 #===============================================================================
@@ -43,6 +70,21 @@ logging.debug("CORS is ENABLED")
 @app.route("/")
 def index():
         return flask.render_template("index.html")
+
+#--- get all trips
+@app.route("/get_all_trips")
+def get_all_trips():
+    df = load_trips(PATH_PROVIDERS)
+    data = df.transpose().to_json()
+    
+    response = app.response_class(
+        response=data,
+        status=200,
+        mimetype='application/json'
+    )
+    logging.info("Returning a trip: {}".format(data))
+    return response    
+
 
 #--- get_test_trip
 @app.route("/get_test_trip")
