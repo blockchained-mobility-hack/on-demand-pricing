@@ -1,0 +1,29 @@
+language: node_js
+
+node_js:
+  - 8
+
+services:
+  - docker
+
+before_script:
+  - yarn --version
+  - yarn global add truffle
+  - yarn global add solium
+  - docker run -d --name bid_on_chain_ganache -p 8545:8545 trufflesuite/ganache-cli:latest
+  - node -v
+  - docker ps -a
+
+after_script:
+  - docker stop bid_on_chain_ganache
+  - docker rm bid_on_chain_ganache
+  - docker ps -a
+
+script:
+  - truffle compile
+  - solium -d ./contracts
+  - truffle migrate
+  - truffle test
+
+notifications:
+  email: false
