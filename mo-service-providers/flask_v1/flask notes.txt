@@ -1,0 +1,8 @@
+http://35.234.113.10:5000/sentiment
+
+
+import urllib as url
+import json
+
+r = url.request.urlopen('http://35.234.113.10:5000/sentiment')
+res = r.read().decode('utf8')
