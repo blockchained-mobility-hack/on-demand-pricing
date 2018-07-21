@@ -29,10 +29,11 @@ export abstract class ConfigService {
    * Returns the configuration for a given key.
    * For each group the configuration is a JSON object
    */
-  abstract getConfig(key: ConfigurationKey): any;
-  abstract getWeb3(): W3;
+  public abstract getConfig(key: ConfigurationKey): any;
+  public abstract getWeb3(): W3;
 }
 
+// tslint:disable max-classes-per-file
 /**
  * Environment variables based configuration.
  * Here are the variables and their semantic.
@@ -50,12 +51,12 @@ export class ConfigServicesImpl implements ConfigService {
   /**
    * Holds all the entire configuration organized in groups, each group has its own key.
    */
-  readonly configs: Map<ConfigurationKey, any>;
+  private readonly configs: Map<ConfigurationKey, any>;
 
   /**
    * The web3 client used to communicate with the underlying block.
    */
-  readonly web3: W3;
+  private readonly web3: W3;
 
   constructor() {
     this.configs = new Map<ConfigurationKey, any>();
@@ -77,6 +78,14 @@ export class ConfigServicesImpl implements ConfigService {
         }
       }
     );
+  }
+
+  public getConfig(key: ConfigurationKey): any {
+    return this.configs.get(key);
+  }
+
+  public getWeb3(): Web3 {
+    return this.web3;
   }
 
   /**
@@ -104,13 +113,5 @@ export class ConfigServicesImpl implements ConfigService {
     }
 
     throw Error('web3 url not supported.');
-  }
-
-  getConfig(key: ConfigurationKey): any {
-    return this.configs.get(key);
-  }
-
-  getWeb3(): Web3 {
-    return this.web3;
   }
 }

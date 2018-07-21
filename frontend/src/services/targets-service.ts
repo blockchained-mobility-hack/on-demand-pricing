@@ -7,7 +7,7 @@ import {TransactionBuilder} from "./transactions-service";
  */
 export abstract class TargetsService {
 
-  abstract addTarget(
+  public abstract addTarget(
     fromLocation: string,
     toLocation: string,
     arrivalTime: number,
@@ -17,14 +17,14 @@ export abstract class TargetsService {
   ): Promise<boolean | any>;
 
 }
-
+// tslint:disable max-classes-per-file
 /**
  * Implementation for TargetsService
  */
 @Provides(TargetsService)
 export class TargetsServiceImpl extends TransactionBuilder implements TargetsService {
 
-  readonly configService: ConfigService;
+  private readonly configService: ConfigService;
 
   constructor(@Inject configService: ConfigService) {
     super();
@@ -34,7 +34,7 @@ export class TargetsServiceImpl extends TransactionBuilder implements TargetsSer
   /**
    * Adding new Travel target to the ledger
    */
-  async addTarget(
+  public async addTarget(
     fromLocation: string,
     toLocation: string,
     arrivalTime: number,
@@ -43,7 +43,7 @@ export class TargetsServiceImpl extends TransactionBuilder implements TargetsSer
     serviceClass?: number
   ): Promise<boolean | any> {
 
-    const args = [];
+    const args: any = [];
     args.push(fromLocation);
     args.push(toLocation);
     args.push(arrivalTime);

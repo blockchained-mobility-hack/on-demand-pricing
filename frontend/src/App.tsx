@@ -5,7 +5,11 @@ import SelectDestination from './components/SelectDestination'
 import logo from './logo.svg';
 
 type Screen = 'SelectDestination' | 'SelectItinerary';
-
+export interface IDestination {
+  time: number,
+  flexibility: number,
+  classType: '1' | '2',
+}
 class App extends React.Component {
   public state: {
     activeScreen: Screen;
@@ -15,13 +19,13 @@ class App extends React.Component {
   constructor(props: {}) {
     super(props);
     this.state = { activeScreen: 'SelectDestination' };
-    this.setDate = this.setDate.bind(this);
+    this.setDestination = this.setDestination.bind(this);
   }
 
-  public setDate(timestamp: number) {
+  public setDestination(destination: IDestination) {
     this.setState({
       activeScreen: 'SelectItinerary',
-      time: timestamp,
+      destination,
     });
   }
   public render() {
@@ -34,7 +38,7 @@ class App extends React.Component {
         <p className="App-intro">
           Get started.
         </p>
-        <SelectDestination setDate={this.setDate}/>
+        <SelectDestination setDestination={this.setDestination}/>
       </div>
     );
   }

@@ -1,7 +1,8 @@
 import React, {FormEvent} from 'react';
+import {IDestination} from "../App";
 
 export interface ISelectDestinationProps {
-  setDate: (timestamp: number) => void;
+  setDestination: (destination: IDestination) => void;
 }
 export default class SelectDestination extends React.Component {
   public props: ISelectDestinationProps;
@@ -60,6 +61,21 @@ export default class SelectDestination extends React.Component {
             </label>
           </div>
           <div>
+            <label>
+              Flexibility (+/- hours):
+              <input type="text" name="flexibility" value="0" />
+            </label>
+          </div>
+          <div>
+            <label>
+              Class:
+              <select name="classType">
+                <option value="1">First Class</option>
+                <option selected={true} value="2">Economy</option>
+              </select>
+            </label>
+          </div>
+          <div>
             <input type="submit" value="Submit" />
           </div>
         </form>
@@ -75,7 +91,12 @@ export default class SelectDestination extends React.Component {
       parseInt(event.target['hours'].value, 10),
       parseInt(event.target['minutes'].value, 10),
     ).getTime();
-    this.props.setDate(timestamp);
+    this.props.setDestination(
+      {
+        classType: event.target['classType'].value,
+        flexibility: event.target['flexibility'].value,
+        time: timestamp,
+      });
     event.preventDefault();
     // tslint:enable no-string-literal
   }

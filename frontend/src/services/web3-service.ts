@@ -1,4 +1,5 @@
-import { Tx, PromiEvent, ABIDefinition, Contract, Account } from 'web3/types';
+// tslint:disable ordered-imports
+import { ABIDefinition, Contract, PromiEvent, Tx, /* Account */ } from 'web3/types';
 import { default as W3 } from 'web3';
 import Web3 from "web3";
 
@@ -54,7 +55,7 @@ export class Web3Service {
    *
    * @returns decoded results
    */
-  public decodeParams(params: any[], hex: string): any {
+  public decodeParams(params: any, hex: string): any {
     return this.web3.eth.abi.decodeParameters(params, hex);
   }
 
@@ -74,6 +75,7 @@ export class Web3Service {
    */
   public getAbiMethodAbi(methodName: string, contractAbi?: ABIDefinition): ABIDefinition {
     const abi = contractAbi || this.config.contract.abi;
+// tslint:disable arrow-return-shorthand
     const methodAbi: ABIDefinition = this.web3.utils._.find(abi, (item: any) => { return item.name === methodName;});
     return methodAbi;
   }
@@ -86,6 +88,7 @@ export class Web3Service {
     return this.web3.eth.call(rawTransaction);
   }
 
+  // tslint:disable array-type
   /**
    * Create a raw transaction from given params
    *
@@ -108,8 +111,8 @@ export class Web3Service {
       // chainid:
       data: encodedMethod,
       from: from || this.config.owner,
-      gas: gas,
-      gasPrice: gasPrice,
+      gas,
+      gasPrice,
       // nonce:
       to: contractAddress,
       value: 0
@@ -138,13 +141,13 @@ export class Web3Service {
   }
 
 }
-
+// tslint:disable max-classes-per-file
 /**
  * Contains a set of common purposes stateless web3
  * related methods.
  */
 export class Web3Util {
-
+// tslint:disable member-access
   static buildRawTransaction(web3: W3,
                              methodName: string,
                              contractAbi: ABIDefinition,
@@ -159,9 +162,9 @@ export class Web3Util {
     const rawTx = {
       // chainid:
       data: encodedMethod,
-      from: from,
-      gas: gas,
-      gasPrice: gasPrice,
+      from,
+      gas,
+      gasPrice,
       to: contractAddress,
       value: 0
     };
@@ -216,7 +219,7 @@ export class Web3Util {
     throw Error('Protocol : ' + protocol + ' is not supported.');
   }
 
-  static decodeParams(web3: W3, params: any[], hexParams: string): any {
+  static decodeParams(web3: W3, params: any, hexParams: string): any {
     return web3.eth.abi.decodeParameters(params, hexParams);
   }
 
@@ -225,10 +228,12 @@ export class Web3Util {
     return this.decodeParams(web3, methodAbi.outputs, result);
   }
 
+  /* ToDo: fix this: type and Class unknown
   static generateEthAccount(web3: W3, user: NewUserType, seed: string): UserTypeWithPrivateKey {
     const account: Account = web3.eth.accounts.create(seed);
     return new UserWithPrivateKey(account.address, user.name, user.email, account.privateKey);
   }
+   */
 
   /**
    * Validate an address is well formed
