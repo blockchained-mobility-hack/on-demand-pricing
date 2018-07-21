@@ -1,3 +1,6 @@
+import {Provides} from 'typescript-ioc';
+import {TransactionBuilder} from "./transactions-service";
+
 /**
  * Interface for TargetsService
  */
@@ -17,9 +20,21 @@ export abstract class TargetsService {
 /**
  * Implementation for TargetsService
  */
-export class TargetsServiceImpl implements TargetsService {
+@Provides(TargetsService)
+export class TargetsServiceImpl extends TransactionBuilder implements TargetsService {
 
-  async addTarget(): Promise<boolean | any> {
+  /**
+   * Adding new Travel target to the ledger
+   */
+  async addTarget(
+    fromLocation: string,
+    toLocation: string,
+    arrivalTime: number,
+    maxStops?: number,
+    timeFlexibility?: number,
+    serviceClass?: number
+  ): Promise<boolean | any> {
+
 
   }
 }
