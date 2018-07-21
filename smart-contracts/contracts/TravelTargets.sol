@@ -62,7 +62,7 @@ contract TravelTargets {
      * Builds MetaData entity for us
      */
     function setMetaData(uint[] metaData) private
-    returns (MetaData) {
+    pure returns (MetaData) {
         return MetaData(metaData[0], metaData[1], metaData[2]);
     }
 
