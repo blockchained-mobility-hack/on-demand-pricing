@@ -41,7 +41,6 @@ contract TravelTargets {
      * Add new Target for User
      */
     function addTarget(
-        address userId,
         string fromLocation,
         string toLocation,
         uint arrivalTime,
@@ -55,6 +54,8 @@ contract TravelTargets {
             arrivalTime,
             setMetaData(metaData)
         );
+        emit TravelTargetAdded(fromLocation, toLocation, arrivalTime);
+        return true;
     }
 
     /**
@@ -64,4 +65,7 @@ contract TravelTargets {
     returns (MetaData) {
         return MetaData(metaData[0], metaData[1], metaData[2]);
     }
+
+    // indicates that a new user was added
+    event TravelTargetAdded(string fromLocation, string toLocation, uint arrivalTime);
 }
