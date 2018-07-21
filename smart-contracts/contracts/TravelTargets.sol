@@ -66,6 +66,6 @@ contract TravelTargets {
         return MetaData(metaData[0], metaData[1], metaData[2]);
     }
 
-    // indicates that a new user was added
+    // indicates that a target was added
     event TravelTargetAdded(string fromLocation, string toLocation, uint arrivalTime);
 }
