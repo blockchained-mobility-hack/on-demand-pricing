@@ -1,5 +1,9 @@
 import { Provides } from 'typescript-ioc';
 import {EventType, Goal, GoalType, TripSuggeston} from "../models/model";
+import {Web3Util} from "../../../frontend/src/services/web3-service";
+
+
+const ethConfig = require('../../eth-config.js');
 
 export abstract class GoalManagerService {
   abstract setGoalForUser(userId: string, goal: GoalType): void;
@@ -15,8 +19,21 @@ export class GoalManagerServiceImpl implements GoalManagerService {
     this.goals = new Map<string, Goal>()
   }
 
-  setGoalForUser(userId: string, goal: GoalType): void {
-    this.goals.set(userId, goal);
+  async setGoalForUser(userId: string, goal: GoalType): Promise<void> {
+    const web3 = Web3Util.buildWeb3('http', ethConfig.domain, ethConfig.port);
+    const rawTx = Web3Util.buildRawTransaction(
+      web3,
+     'addTarget',
+      ethConfig.travelTargetsAbi,
+      ethConfig.travelTargetsAddress,
+      ['Munich', 'Berlin', 0, [0, 1, 3]],
+      1,
+      '1000000000',
+      ethConfig.ownerAddress
+    );
+
+    const reciept = await Web3Util.invokeTransaction(web3, rawTx);
+    console.log(reciept);
   }
 
   getGoal(goalId: string): GoalType {
