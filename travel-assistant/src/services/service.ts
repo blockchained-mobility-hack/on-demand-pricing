@@ -24,10 +24,14 @@ export class GoalManagerServiceImpl implements GoalManagerService {
      'addTarget',
       ethConfig.travelTargetsAbi,
       ethConfig.travelTargetsAddress,
-      ['Munich', 'Berlin', 0, [0, 1, 3]],
+      [
+        goal.fromLocation,
+        goal.toLocation,
+        goal.arrivalTime,
+        [goal.metadata.maxStops, goal.metadata.timeFlexibility, goal.metadata.serviceClass]],
       1,
       '1000000000',
-      ethConfig.ownerAddress
+      ethConfig.ownerAddress // since we don't have UserManagement, we use Admin's address
     );
 
     const reciept = await Web3Util.invokeTransaction(web3, rawTx);
