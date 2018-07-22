@@ -2,10 +2,11 @@ import * as React from 'react';
 import './App.css';
 import SelectDestination from './components/SelectDestination'
 import SelectTrip from "./components/SelectTrip";
+import SelectTripActions from "./components/SelectTripAction";
 
 import logo from './logo.svg';
 
-type Screen = 'SelectDestination' | 'SelectTrip';
+type Screen = 'SelectDestination' | 'SelectTrip' | 'SelectTripActions';
 export interface IDestination {
   time: number,
   flexibility: number,
@@ -21,6 +22,7 @@ class App extends React.Component {
     super(props);
     this.state = { activeScreen: 'SelectDestination' };
     this.setDestination = this.setDestination.bind(this);
+    this.setTrip = this.setTrip.bind(this);
   }
 
   public setDestination(destination: IDestination) {
@@ -29,6 +31,13 @@ class App extends React.Component {
       destination,
     });
   }
+
+  public setTrip() {
+    this.setState({
+      activeScreen: 'SelectTripActions',
+    });
+  }
+
   public render() {
     return (
       <div className="App">
@@ -42,7 +51,9 @@ class App extends React.Component {
         { this.state.activeScreen === 'SelectDestination' &&
         <SelectDestination setDestination={this.setDestination}/> }
         { this.state.activeScreen === 'SelectTrip' &&
-        <SelectTrip /> }
+        <SelectTrip setTrip={this.setTrip}/> }
+        { this.state.activeScreen === 'SelectTripActions' &&
+        <SelectTripActions /> }
       </div>
     );
   }

@@ -2,7 +2,11 @@ import React from 'react';
 import backupAllTripsJson from './backupAllTripsJson';
 import {default as TripLine, ITrip} from "./TripLine";
 
+export interface ISelectTripProps {
+  setTrip: () => void;
+}
 export default class SelectTrip extends React.PureComponent {
+  public props: ISelectTripProps;
   public state: {
     trips: ITrip[] | null;
   };
@@ -41,7 +45,7 @@ export default class SelectTrip extends React.PureComponent {
     return this.state.trips.map(
       (trip) =>
       // @ts-ignore: should be ok
-      (<TripLine key={trip.tripID} trip={trip}/>)
+      (<TripLine key={trip.tripID} trip={trip} setTrip={this.props.setTrip}/>)
     );
   }
 }

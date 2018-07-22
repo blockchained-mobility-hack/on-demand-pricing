@@ -14,7 +14,7 @@ export interface ITrip {
   discount_rate?: number
 }
 export default class TripLine extends React.PureComponent {
-  public props: { trip: ITrip}
+  public props: { trip: ITrip; setTrip: () => void; }
   constructor(props) {
     super(props);
   }
@@ -22,7 +22,7 @@ export default class TripLine extends React.PureComponent {
     return (
       <div className="TripLine" style={ { marginBottom: 20}}>
         { this.renderLine() }
-        <button>Select Trip</button>
+        <button onClick={this.props.setTrip}>Select Trip</button>
       </div>
     )
   }
