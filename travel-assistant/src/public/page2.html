@@ -1,0 +1,132 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="css/fixedColumns.dataTables.min.css">
+        <link rel="stylesheet" href="css/select.dataTables.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+      	<form class="myform">
+      	
+     		<h3>Trip Recommendations</h3>
+     		<hr />
+     		
+		  	<table id="example" class="stripe row-border order-column nowrap" style="width:100%">
+		  		<thead>
+            		<tr>
+		                <th></th>
+		                <th>Service Provider</th>
+		                <th>Connection (From - To)</th>
+		                <th>Time (From - To)</th>
+		            </tr>
+        		</thead>
+        		<tbody>
+		            <tr>
+		                <td></td>
+		                <td>Tiger1</td>
+		                <td>Nixon1</td>
+		                <td>System Architect1</td>
+		            </tr>
+		            <tr>
+		                <td></td>
+		                <td>Tiger2</td>
+		                <td>Nixon2</td>
+		                <td>System Architect2</td>
+		            </tr>
+		            <tr>
+		                <td></td>
+		                <td>Tiger3</td>
+		                <td>Nixon3</td>
+		                <td>System Architect3</td>
+		            </tr>
+		            <tr>
+		                <td></td>
+		                <td>Tiger4</td>
+		                <td>Nixon4</td>
+		                <td>System Architect4</td>
+		            </tr>
+	            </tbody>
+		  	</table>
+		  	
+		  	<hr />
+		  	
+		  	<div class="form-group row">
+		    	<div class="col-sm-10">
+		      		<button type="submit" class="btn btn-primary">Submit</button>
+		    	</div>
+		  	</div>
+		</form>
+
+    </div>  
+	
+		<script src="js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/vendor/jquery.dataTables.min.js"></script>
+        <script src="js/vendor/dataTables.fixedColumns.min.js"></script>
+        <script src="js/vendor/dataTables.select.min.js"></script>
+        <script>
+	        $(document).ready(function() {
+	            $('#example').DataTable( {
+	                scrollY:        300,
+	                scrollX:        true,
+	                scrollCollapse: true,
+	                paging:         false,
+	                fixedColumns:   {
+	                    leftColumns: 2
+	                },
+	                columnDefs: [ {
+	                    orderable: false,
+	                    className: 'select-checkbox',
+	                    targets:   0
+	                } ],
+	                select: {
+	                    style:    'os',
+	                    selector: 'td:first-child'
+	                },
+	                order: [[ 1, 'asc' ]]
+	            } );
+	        } );
+        </script>
+    </body>
+</html>
