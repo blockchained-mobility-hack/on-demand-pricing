@@ -1,17 +1,17 @@
 # **Power Trip**
 
-*Satisfaction: Garaunteed on-chain*
+*Satisfaction: Garaunteed on-chain *
 
 Let's get into the D.E.T.A.I.L.S of our project; Power Trip!
 
 ```
-D istributed
-E vent based
-T ravel
-A nd
-I n
-L edger
-S ervice
+Distributed
+Event based
+Travel
+And
+In
+Ledger
+Service
 ```
 
 Have you ever been on the train and had a disruption? Just yesterday, I was sitting
@@ -72,8 +72,6 @@ The TBS is free to establish garauntees for their customers according to market 
 ![v2](doc/Architecture-v2.jpg)
 #### Overall architecture, v3
 ![v3](doc/Architecture-v3.jpg)
-#### Overall architecture, v4
-![v4](doc/Architecture-v4.jpg)
 
 ## Service Providers
 
@@ -88,4 +86,11 @@ The Service Providers component comprises the Mobility Service Registry, a serve
 ![1](doc/trips-schema.jpg)
 
 
-#
+# Smart Contracts
+
+Ethereum smart contracts make sure that the conditions set at the beginning of the trip are enforced during the **Power Trip**.
+The smart contracts can be broken into 4 major components;
+ * **Travel Target Registry**:  
+ * **Events Contract**:
+ * **Pricing Contract**:
+ * **Service Provider Rules**:
