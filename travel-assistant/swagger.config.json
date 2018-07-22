@@ -2,7 +2,7 @@
   "swagger": {
     "outputDirectory": "./dist",
     "entryFile": "./src/index.ts",
-    "name": "Power Trip",
+    "name": "Power Trip API Specs",
     "description": "Empower the Traveller!",
     "license": "MIT",
     "produces": ["application/json"],
