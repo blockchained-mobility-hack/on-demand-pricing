@@ -1,10 +1,11 @@
 import * as React from 'react';
 import './App.css';
 import SelectDestination from './components/SelectDestination'
+import SelectTrip from "./components/SelectTrip";
 
 import logo from './logo.svg';
 
-type Screen = 'SelectDestination' | 'SelectItinerary';
+type Screen = 'SelectDestination' | 'SelectTrip';
 export interface IDestination {
   time: number,
   flexibility: number,
@@ -24,7 +25,7 @@ class App extends React.Component {
 
   public setDestination(destination: IDestination) {
     this.setState({
-      activeScreen: 'SelectItinerary',
+      activeScreen: 'SelectTrip',
       destination,
     });
   }
@@ -38,7 +39,10 @@ class App extends React.Component {
         <p className="App-intro">
           Get started.
         </p>
-        <SelectDestination setDestination={this.setDestination}/>
+        { this.state.activeScreen === 'SelectDestination' &&
+        <SelectDestination setDestination={this.setDestination}/> }
+        { this.state.activeScreen === 'SelectTrip' &&
+        <SelectTrip /> }
       </div>
     );
   }
