@@ -1,17 +1,17 @@
 # **Power Trip**
 
-*Satisfaction: Garaunteed on-chain *
+*Satisfaction: Garaunteed on-chain*
 
 Let's get into the D.E.T.A.I.L.S of our project; Power Trip!
 
 ```
-Distributed
-Event based
-Travel
-And
-In
-Ledger
-Service
+D istributed
+E vent based
+T ravel
+A nd
+I n
+L edger
+S ervice
 ```
 
 Have you ever been on the train and had a disruption? Just yesterday, I was sitting
@@ -69,6 +69,8 @@ The TBS is free to establish garauntees for their customers according to market 
 ![v2](doc/Architecture-v2.jpg)
 #### Overall architecture, v3
 ![v3](doc/Architecture-v3.jpg)
+#### Overall architecture, v4
+![v4](doc/Architecture-v4.jpg)
 
 ## Service Providers
 
