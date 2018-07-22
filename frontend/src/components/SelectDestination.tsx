@@ -69,9 +69,9 @@ export default class SelectDestination extends React.Component {
           <div>
             <label>
               Class:
-              <select name="classType">
+              <select name="classType" defaultValue="2">
                 <option value="1">First Class</option>
-                <option selected={true} value="2">Economy</option>
+                <option value="2">Economy</option>
               </select>
             </label>
           </div>
