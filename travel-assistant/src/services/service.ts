@@ -1,10 +1,9 @@
 import { Provides } from 'typescript-ioc';
-import {EventType, Goal, GoalType, TripSuggeston} from "../models/model";
+import {EventType, Goal, GoalType, TripSuggestion} from "../models/model";
 
 export abstract class GoalManagerService {
   abstract setGoalForUser(userId: string, goal: GoalType): void;
   abstract getGoal(goalId: string): GoalType;
-
 }
 
 @Provides(GoalManagerService)
@@ -25,12 +24,12 @@ export class GoalManagerServiceImpl implements GoalManagerService {
 }
 
 export abstract class RecommendService {
-  abstract recommend(goal: GoalType): Array<TripSuggeston>;
+  abstract recommend(goal: GoalType): Array<TripSuggestion>;
 }
 
 @Provides(RecommendService)
 export class RecommendServiceImpl implements RecommendService{
-  recommend(goal: GoalType): Array<TripSuggeston> {
+  recommend(goal: GoalType): Array<TripSuggestion> {
     return undefined;
   }
 }
@@ -42,6 +41,7 @@ export abstract class EventObserver {
 @Provides(EventObserver)
 export class EventObserverImpl implements EventObserver {
   onEvent(event: EventType): any {
+    //
   }
 }
 
