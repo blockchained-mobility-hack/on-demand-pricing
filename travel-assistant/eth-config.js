@@ -8,7 +8,7 @@ module.exports = {
   seed: 'candy maple cake sugar pudding cream honey rich smooth crumble sweet treat',
   ownerAddress: '0x627306090abaB3A6e1400e9345bC60c78a8BEf57',
   ownerPrivateKey: '0xc87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3',
-  travelTargetsAddress: '0x345ca3e014aaf5dca488057592ee47305d9b3e10',
+  travelTargetsAddress: '0xf25186b5081ff5ce73482ad761db0eb0d25abfbf',
   travelTargetsAbi: [
     {
       "constant": true,
