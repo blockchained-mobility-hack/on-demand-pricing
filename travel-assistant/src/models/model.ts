@@ -1,6 +1,6 @@
 export type GoalType = {
-  location: string;
-  fromTime: Date;
+  fromLocation: string;
+  toLocation: string;
   arrivalTime: Date;
   metadata: MetadataType;
 };
@@ -26,10 +26,10 @@ export type ServiceProvider = {
 }
 
 export class Goal implements GoalType {
-  location: string;
+  fromLocation: string;
+  toLocation: string;
   metadata: any;
   arrivalTime: Date;
-  fromTime: Date;
 }
 
 export type EventType = {
