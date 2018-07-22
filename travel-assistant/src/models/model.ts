@@ -1,10 +1,19 @@
 export type GoalType = {
   location: string;
-  timestamp: Date;
+  fromTime: Date;
+  arrivalTime: Date;
+  metadata: MetadataType;
+};
+
+export type MetadataType = {
+  maxStops: number;
+  timeFlexibility: number;
+  serviceClass: number;
+  // specific metadata
   metadata: any;
 };
 
-export type TripSuggeston = {
+export type TripSuggestion = {
   location: string;
   timestamp: number;
   provider: ServiceProvider;
@@ -13,18 +22,14 @@ export type TripSuggeston = {
 export type ServiceProvider = {
   id: string;
   name: string;
-  metadata: any;
+  metadata: MetadataType;
 }
 
 export class Goal implements GoalType {
   location: string;
   metadata: any;
-  timestamp: Date;
-
-  constructor(location: string, timestamp: Date) {
-    this.location = location;
-    this.timestamp = timestamp;
-  }
+  arrivalTime: Date;
+  fromTime: Date;
 }
 
 export type EventType = {
@@ -39,8 +44,5 @@ export enum Event  {
   END_TRIP,
   SWITCH_PROVIDER,
   STATUS,
-  DISTORT
+  DISRUPT
 }
-
-
-

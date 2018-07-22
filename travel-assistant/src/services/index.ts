@@ -1,6 +1,8 @@
-import {GoalManagerService, GoalManagerServiceImpl} from "./service";
+import {GoalManagerService, GoalManagerServiceImpl, RecommendService, RecommendServiceImpl} from "./service";
 
 export default [
   GoalManagerService,
-  GoalManagerServiceImpl
+  GoalManagerServiceImpl,
+  RecommendService,
+  RecommendServiceImpl
 ];
