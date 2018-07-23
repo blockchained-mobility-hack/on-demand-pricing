@@ -2,8 +2,8 @@
   "swagger": {
     "outputDirectory": "./dist",
     "entryFile": "./src/index.ts",
-    "name": "Typescript-rest Boilerplate Application",
-    "description": "A Sample application using Typescipt-rest library",
+    "name": "Power Trip API Specs",
+    "description": "Empower the Traveller!",
     "license": "MIT",
     "produces": ["application/json"],
     "version": "0.0.1"

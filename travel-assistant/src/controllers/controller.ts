@@ -44,3 +44,14 @@ export class EventController {
   fire(event: EventType): void {
   }
 }
+
+
+@Path('/price')
+export class PriceController {
+
+  @GET
+  @Path(':userid/:goalid')
+  getPrice(@PathParam('goalid') goalid: string, @PathParam('userid') userid: string): string {
+    return '154,95 EUR';
+  }
+}
