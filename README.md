@@ -58,6 +58,9 @@ The smart contracts are enforced by customer and vehicle sensors, and provided b
 
 SC1 could be triggered by i.e. `temperature > 26 for > 1000 timesteps`, or by `actual arrival time - promised arrival time > 30 minutes`.
 
+### Smart contracts
+![v](doc/Smart-Contracts.jpg)
+
 
 ### service garauntee rules
 
