@@ -76,7 +76,7 @@ headers = {'Authorization': 'Bearer' + ' '+ 'm3w4oNTZSyi3MolHOgCyAj9OZl1U'}
 
 # From json auth response, use access_token 
 
-r = requests.get(get_flights_url, headeheadeheadeheadeheadeheade "scope": ""\n        }\n        'rs=headers, data = data)
+r = requests.get(get_flights_url, headers=headers, data = data)
 
 #r = requests.get(url, headers=headers)
 r = requests.post(amadeus_url, headers=headers, data = data)
